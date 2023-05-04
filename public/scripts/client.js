@@ -54,7 +54,10 @@ const createTweetElement = (tweetData) => {
         </div>
         <!-- tweet contect -->
         <div class="tweet-content">
-        <p>${content.text}</p>
+        <!-- <p>${content.text}</p> -->
+        ${$("<p>")
+          .text(content.text)
+          .html()}
         </div>
         <!-- time and reactions icons -->
         <div class="time-reactions">
