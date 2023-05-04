@@ -1,0 +1,23 @@
+header {
+  background: rgba(87, 85, 76, 0.7);
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 120px 0 0 0;
+}
+
+header > img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.avatar_name {
+  color: white;
+}
