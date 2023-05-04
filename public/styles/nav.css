@@ -41,3 +41,18 @@ nav > span {
   color: red;
   cursor: pointer;
 }
+
+@keyframes arrowMovement {
+  from {
+    transform: translate3d(0, -5px, 0);
+  }
+  to {
+    transform: translate3d(0, 5px, 0);
+  }
+}
+
+.nav_new_tweet i:hover {
+  animation: arrowMovement 0.5s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}

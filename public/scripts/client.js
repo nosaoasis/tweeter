@@ -94,7 +94,22 @@ const displayError = err_msg => {
     .slideDown("slow");
 };
 
+// toggle tweet form
+const toggleTweetForm = () => {
+  var $section = $("section.new-tweet");
+
+  if ($section.is(":visible")) {
+    $section.slideUp("fast");
+  } else {
+    $section.slideDown("fast");
+    $section.find("textarea").focus();
+  }
+};
+
 $(document).ready(function () {
+
+  // hide form
+  $(".new-tweet").hide();
 
   $("form").on("submit", function (e) {
     e.preventDefault();
