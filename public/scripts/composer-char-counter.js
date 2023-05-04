@@ -16,6 +16,19 @@ $(document).ready(function () {
       $(this).next().find("output").text(charsLeft);
     });
 
+  // hide back to top button at initial render
+  $(".back-to-top").hide();
+  // call toggleBackTpTopBtn on page scroll
+  $(window).scroll(toggleBackTpTopBtn);
+  // clicking on back to top
+  $(".back-to-top").on("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    toggleBackTpTopBtn();
+  });
+
   // click to toggle form
   $(".form-toggle").on("click", toggleTweetForm);
 });
