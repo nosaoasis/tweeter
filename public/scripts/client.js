@@ -4,6 +4,8 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+let endpoint = "/tweets";
+
 const data = [
   {
     "user": {
@@ -71,4 +73,22 @@ const createTweetElement = tweetData => {
 
 $(document).ready(function() {
   renderTweets(data)
+
+  $("form").on("submit", function(e) {
+    e.preventDefault();
+    
+    $.ajax({
+      method: "POST",
+      url: endpoint,
+      type: "application/json",
+      data: $(this).serialize(),
+      success: function() {
+        $("textarea").val("");
+        $.get("http://localhost:8080/tweets", data => {
+          const newTweet = [data.slice(-1).pop()];
+          renderTweets(newTweet);
+        });
+      }
+    });
+  });
 })
