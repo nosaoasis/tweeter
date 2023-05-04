@@ -85,6 +85,15 @@ const loadTweets = () => {
   });
 };
 
+// display errors
+const displayError = err_msg => {
+  $("form")
+    .find(".error_msg")
+    .text(err_msg)
+    .show()
+    .slideDown("slow");
+};
+
 $(document).ready(function () {
 
   $("form").on("submit", function (e) {
@@ -96,8 +105,8 @@ $(document).ready(function () {
         .find("textarea")
         .val().length > defaultCharsLeft
     ) {
-      alert("Your tweet is too long.")
-      return
+      const error_msg = "You cannot exceed more than 140 characters";
+      return displayError(error_msg);
     }
     // if content is empty
     if (
@@ -105,8 +114,8 @@ $(document).ready(function () {
         .find("textarea")
         .val().length < 1
     ) {
-      alert("You can't send an empty tweet.")
-      return
+      const error_msg = "You cannot post an empty tweet.";
+      return displayError(error_msg);
     }
 
     $.ajax({
