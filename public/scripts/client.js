@@ -113,8 +113,9 @@ $(document).ready(function () {
       data: $(this).serialize(),
       success: function () {
         $("textarea").val("");
-        $.get("http://localhost:8080/tweets", (data) => {
-          const newTweet = [data.slice(-1).pop()];
+        $(".counter").text(140)
+        $.get("http://localhost:8080/tweets", data => {
+          const newTweet = data.slice(-1);
           renderTweets(newTweet);
         });
       },
