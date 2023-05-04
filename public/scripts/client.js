@@ -87,6 +87,25 @@ $(document).ready(function () {
   $("form").on("submit", function (e) {
     e.preventDefault();
 
+    // if content is more than 14 characters
+    if (
+      $(this)
+        .find("textarea")
+        .val().length > defaultCharsLeft
+    ) {
+      alert("Your tweet is too long.")
+      return
+    }
+    // if content is empty
+    if (
+      $(this)
+        .find("textarea")
+        .val().length < 1
+    ) {
+      alert("You can't send an empty tweet.")
+      return
+    }
+
     $.ajax({
       method: "POST",
       url: endpoint,
