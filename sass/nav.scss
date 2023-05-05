@@ -1,6 +1,7 @@
 nav {
   height: 120px;
   width: 100%;
+  // background: #4056a1;
   background: green;
   color: #ffffff;
   padding: 0 1.5em;
@@ -50,6 +51,7 @@ nav > span {
     transform: translate3d(0, 5px, 0);
   }
 }
+
 .nav_new_tweet i:hover {
   animation: arrowMovement 0.5s;
   animation-direction: alternate;
