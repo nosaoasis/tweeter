@@ -1,0 +1,16 @@
+@media only screen and (min-width: 1024px) {
+  /* Write CSS rules that target Laptop/Desktop screen sizes and beyond */
+  .media {
+    display: flex;
+    margin: 120px 0 0 0;
+  }
+
+  .media header {
+    flex: 1;
+    margin: 20px 5% 0 5%;
+  }
+
+  .media main {
+    flex: 1;
+  }
+}

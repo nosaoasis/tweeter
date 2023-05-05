@@ -6,31 +6,6 @@
 
 let endpoint = "/tweets";
 
-const data = [
-  {
-    user: {
-      name: "Newton",
-      avatars: "https://i.imgur.com/73hZDYK.png",
-      handle: "@SirIsaac",
-    },
-    content: {
-      text: "If I have seen further it is by standing on the shoulders of giants",
-    },
-    created_at: 1461116232227,
-  },
-  {
-    user: {
-      name: "Descartes",
-      avatars: "https://i.imgur.com/nlhLi3I.png",
-      handle: "@rd",
-    },
-    content: {
-      text: "Je pense , donc je suis",
-    },
-    created_at: 1461113959088,
-  },
-];
-
 // render tweets
 const renderTweets = (tweets) => {
   tweets.forEach((tweet) => {
@@ -92,6 +67,9 @@ const displayError = err_msg => {
     .text(err_msg)
     .show()
     .slideDown("slow");
+    setTimeout(() => {
+      $(".error_msg").hide();
+    }, 3000);
 };
 
 // toggle tweet form
@@ -103,6 +81,15 @@ const toggleTweetForm = () => {
   } else {
     $section.slideDown("fast");
     $section.find("textarea").focus();
+  }
+};
+
+// check scroll by user
+const toggleBackTpTopBtn = () => {
+  if ($(window).scrollTop() > 0) {
+    $(".back-to-top").show().fadeIn("slow");
+  } else {
+    $(".back-to-top").hide().fadeOut("slow");
   }
 };
 
@@ -141,6 +128,7 @@ $(document).ready(function () {
       success: function () {
         $("textarea").val("");
         $(".counter").text(140)
+        $(".error_msg").hide();
         $.get("http://localhost:8080/tweets", data => {
           const newTweet = data.slice(-1);
           renderTweets(newTweet);
